@@ -23,7 +23,7 @@
             "moon_phase_lunation": 0.36,
             "valid_date": "2021-03-23",
             "app_max_temp": 9.8,
-                "vis": 23.121166,
+                "": 23.121166,
                 "dewpt": 5.1,
                 "snow": 0,
                 "uv": 3.4955893,
@@ -71,7 +71,7 @@
                 "dewpt": 4.5,
                 "snow": 0,
                 "uv": 2.3655047,
-                "weather": {
+                "": {
                     "icon": "r01d",
                     "code": 500,
                     "description": "Light rain"
