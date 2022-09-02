@@ -4,7 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
-import Data from './weather.json'
+import Data from './weather.json';
+import Pok from './Pok';
 
 
 class App extends React.Component{
@@ -64,10 +65,10 @@ class App extends React.Component{
       this.setState({
         errorFlag: true,
         correctFlag:false,
-      cardFlag:false
+      cardFlag:false,
+      trueData:false
       })
     }
-    // console.log(Data)
 
    
 
@@ -83,7 +84,6 @@ class App extends React.Component{
   checkData= (lat,lon) =>{
      Data.map(item => {
       if(lat === item.lat && lon === item.lon){
-        console.log("true")
         return(
           this.setState({
             trueData:true,
@@ -101,12 +101,10 @@ class App extends React.Component{
             describtion:item.data[0].weather.description,
           })
         )
-          
       }
+      return -1;
       }
-     
     )
-
   }
 
 
@@ -129,7 +127,7 @@ class App extends React.Component{
 
 
     <br></br>
-    {this.state.cardFlag && <Card style={{ width: '30rem' }}>
+    {this.state.cardFlag && <Card style={{ width: '100rem' }}>
     {this.state.correctFlag && <Card.Img variant="top" src={`https://maps.locationiq.com/v3/staticmap?key=pk.d63f789567346be0d16e65b136ea44aa&center=${this.state.lat},${this.state.lon}`} />}
       <Card.Body>
         
@@ -144,10 +142,10 @@ class App extends React.Component{
     {this.state.errorFlag && <h4>Error: {this.state.error}</h4>}
 
     <br></br>
-    {this.state.trueData && <Card style={{ width: '100rem' }}>
+    {this.state.trueData && <Card border="info" style={{ width: '100rem' }}>
       <Card.Body>
         <Card.Title>Forcast for: {this.state.display_name}</Card.Title>
-        <Card.Text>"wind_dir":{this.state.winddir}</Card.Text>
+        <Card.Text>wind_dir:{this.state.winddir}</Card.Text>
         
         <Card.Text>cloudshi: {this.state.cloudshi}</Card.Text>
         <Card.Text>precip: {this.state.precip}</Card.Text>
@@ -162,9 +160,10 @@ class App extends React.Component{
         <Card.Text>describtion:{this.state.describtion}</Card.Text> 
       </Card.Body>
     </Card>}
-    <h1>{this.state.time}</h1>
+    <Pok />
     
       </div>
+      
     )
   }
 }
